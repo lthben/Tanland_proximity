@@ -76,9 +76,11 @@ void read_switch() {
     if (switch_status == HIGH) {
       Serial.write(0);
       //      Serial.println("off");
+      delay(100); //to allow the Flash program to sample fast enough
     } else {
       Serial.write(1);
       //      Serial.println("on");
+      delay(100); //to allow the Flash program to sample fast enough 
     }
   }
 
