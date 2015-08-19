@@ -1,8 +1,8 @@
 /* Author: Benjamin Low
  * Last update: 17 Aug 2015
  * Description: Infrared proximity sensor for ball detection passing
- * through a tube. Constantly serial writes the sensor value from 0-255. 
- * A lower value means ball is detected. 
+ * through a tube. Constantly serial writes the sensor value from 0-255.
+ * A lower value means ball is detected.
  * A 5V arcade button is also connected. Button lights
  * are controlled by an external program through the serial port.
  * Serial writes to port to external program whenever button status changes.
@@ -37,11 +37,11 @@ void loop() {
   sensor_value = map(sensor_value, 0, 500, 0, 255);
   sensor_value = constrain(sensor_value, 2, 255);
   Serial.write(sensor_value);
-
+  //      Serial.println(sensor_value);
 
   //run_test(); //for testing purposes with Processing GUI
 
-  run_led(); //controlled by external command 
+  run_led(); //controlled by external command
 
   delay(20);
 }
@@ -74,13 +74,13 @@ void read_switch() {
   if (switch_status != prev_switch_status) {
 
     if (switch_status == HIGH) {
-      Serial.write(0);
-      //      Serial.println("off");
+        Serial.write(0);
+//      Serial.println("off");
       delay(100); //to allow the Flash program to sample fast enough
     } else {
-      Serial.write(1);
-      //      Serial.println("on");
-      delay(100); //to allow the Flash program to sample fast enough 
+        Serial.write(1);
+//      Serial.println("on");
+      delay(100); //to allow the Flash program to sample fast enough
     }
   }
 
